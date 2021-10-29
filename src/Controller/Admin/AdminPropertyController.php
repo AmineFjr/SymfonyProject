@@ -57,6 +57,7 @@ class AdminPropertyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $this->em->persist($property);
             $this->em->flush();
+            $this->addFlash('success','Bien crée avec succès');
             return $this->redirectToRoute('admin.property.index');
         }
 
@@ -68,7 +69,7 @@ class AdminPropertyController extends AbstractController
 
 
     /**
-     * @Route("/admin/property/{id}", name="admin.property.edit")
+     * @Route("/admin/property/{id}", name="admin.property.edit", methods="GET|POST")
      * @param Property $property
      * @return Response
      */
@@ -79,11 +80,32 @@ class AdminPropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             $this->em->flush();
+            $this->addFlash('success','Bien modifié avec succès');
             return $this->redirectToRoute('admin.property.index');
         }
 
         return $this->render('admin/property/edit.html.twig', ['property' => $property,
                                                                     'form' => $form->createView()]);
+    }
+
+
+    /**
+     * @Route("/admin/property/{id}", name="admin.property.delete", methods="DELETE")
+     * @param Property $property
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function delete(Property $property, Request $request)
+    {
+        if($this->isCsrfTokenValid('delete'. $property->getId(),  $request->get('_token')))
+        {
+
+            $this->em->remove($property);
+            $this->em->flush();
+            $this->addFlash('success','Bien supprimé avec succès');
+        }
+
+        return $this->redirectToRoute('admin.property.index');
     }
 
 
