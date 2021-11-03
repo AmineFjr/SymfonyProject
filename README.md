@@ -60,3 +60,12 @@ Image:
 composer require vich/uploader-bundle
 
 composer require liip/imagine-bundle
+  
+--------------------------------------------------
+  
+Mails : 
+
+composer require symfony/swiftmailer-bundle
+  
+and maildev in terminal 
+  
