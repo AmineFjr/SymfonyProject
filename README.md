@@ -51,3 +51,12 @@ composer require knplabs/knp-paginator-bundle
 Vider la cache : 
 
 php bin/console cache:clear
+
+
+--------------------------------------------------
+
+Image:
+
+composer require vich/uploader-bundle
+
+composer require liip/imagine-bundle
