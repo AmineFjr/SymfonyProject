@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=OptionRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\OptionRepository")
  * @ORM\Table(name="`option`")
  */
 class Option
@@ -26,7 +26,7 @@ class Option
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Property::class, inversedBy="options")
+     * @ORM\ManyToMany(targetEntity=Property::class, mappedBy="options")
      */
     private $properties;
 
