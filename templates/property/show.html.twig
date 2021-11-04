@@ -18,7 +18,7 @@
                 <div class="alert alert-danger">
                     Erreur, attention il faut que tu modifie les informations
                 </div>
-            {%  %}
+            {%  endif %}
             <div class="row">
                 <div class="col-md-8">
                     {% if property.filename %}
@@ -55,12 +55,6 @@
                             </div>
                         </div>
                         {{ form_rest(form) }}
-
-                        <div class="form-group">
-                            <button class="btn-primary">
-                                Envoyer
-                            </button>
-                        </div>
                         {{ form_end(form) }}
                     </div>
                 </div>
